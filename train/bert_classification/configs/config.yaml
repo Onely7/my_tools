@@ -1,0 +1,26 @@
+data:
+  name: "yelp_review_full"
+  tokenized:
+    train: "../data/yelp_review_full_train_tokenized_dryrun"
+    valid: "../data/yelp_review_full_valid_tokenized_dryrun"
+  encoded:
+    train: "../data/yelp_review_full_train_encoded_dryrun"
+    valid: "../data/yelp_review_full_valid_encoded_dryrun"
+model:
+  name: "bert-base-cased"
+train:
+  dryrun_epoch: 5
+  epoch: 20
+  train_batch_size: 16
+  valid_batch_size: 32
+  seed: 42
+  optimizer:
+    name: "AdamW"
+    lr: 2.0e-5
+    weight_decay: 0.01
+  scheduler: "cosine_schedule_with_warmup"
+  loss: "CrossEntropyLoss"
+  metric: "accuracy"
+output_dir: "../outputs"
+device: "cuda"
+dry_run: true
